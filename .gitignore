@@ -30,7 +30,22 @@ Thumbs.db
 # local extracts and runtime
 _extract/
 data/local/
+data/raw/*.shp
+data/raw/*.shx
+data/raw/*.dbf
+data/raw/*.prj
+data/raw/*.sbn
+data/raw/*.sbx
+data/raw/**/*.shp
+data/raw/**/*.shx
+data/raw/**/*.dbf
+data/raw/**/*.prj
 apps/web/.next/
 apps/web/node_modules/
 apps/web/tsconfig.tsbuildinfo
 *.tsbuildinfo
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/

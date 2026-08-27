@@ -66,12 +66,16 @@ Classify and the ministry note must hit Gemini on the live URL. Score is SQL, no
 
 ## Local setup
 
-You need Node 22+ and a Gemini API key. Cloud Run deploy is the only production step you have to run.
+Python is the planning engine. Next.js is the UI. You need Python 3.12, Node 22+, and a Gemini API key. Cloud Run is the only production step you run.
 
 ```bash
 copy .env.example .env
 # fill GEMINI_API_KEY  (required for classify + ministry note)
-# GCP_PROJECT and MAPS_KEY can wait
+
+python -m pip install -r apps/api/requirements.txt
+python etl/generate_sample_events.py
+python -m pytest apps/api/tests
+python -m uvicorn nirmangrid.main:app --app-dir apps/api --reload --port 8000
 
 npm install --prefix apps/web
 npm run dev
@@ -82,7 +86,7 @@ Open http://127.0.0.1:3000
 - `/citizen` — photo + pin + text. Gemini classifies. No priority_score in that JSON.
 - `/ops` — Delhi SAMPLE clusters, SQL score drawer, elevate.
 - `/national` — ranked shelf across tenants.
-- `/api/health` — sample count + whether Gemini is configured.
+- `/api/health` — proxied to the Python API (`engine: python`, 60 SAMPLE events)
 
 Without `GEMINI_API_KEY`, the map and scores still run. Filing a live report or elevating returns 503. We do not stub Gemini.
 

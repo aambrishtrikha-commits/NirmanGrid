@@ -1,0 +1,61 @@
+id,source,tenant_id,lat,lng,lang,channel,media_type,raw_text,category_gold,district,cluster_id
+SAMPLE-DL-001,SAMPLE,delhi_pwd,28.628369881849483,77.21939504773178,hi,web,photo,"जनकपथ पर बड़ा गड्ढा, गाड़ियाँ झटका खा रही हैं",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-002,SAMPLE,delhi_pwd,28.627816619628387,77.21909123746863,hi,web,photo,"Same stretch, pothole near the crossing after rain",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-003,SAMPLE,delhi_pwd,28.628137262456693,77.21929226413681,hi,web,photo,"सड़क टूटी हुई है, रात को दिखाई नहीं देती",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-004,SAMPLE,delhi_pwd,28.628019189577177,77.21906287417066,en,web,photo,"जनकपथ पर बड़ा गड्ढा, गाड़ियाँ झटका खा रही हैं",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-005,SAMPLE,delhi_pwd,28.628070226890376,77.21936112382933,hi,web,photo,"Same stretch, pothole near the crossing after rain",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-006,SAMPLE,delhi_pwd,28.628180695534713,77.21936247150659,hi,web,photo,"सड़क टूटी हुई है, रात को दिखाई नहीं देती",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-007,SAMPLE,delhi_pwd,28.62788597128329,77.21939110945205,hi,web,photo,"जनकपथ पर बड़ा गड्ढा, गाड़ियाँ झटका खा रही हैं",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-008,SAMPLE,delhi_pwd,28.627990631018594,77.2192943287257,hi,web,photo,"Same stretch, pothole near the crossing after rain",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-009,SAMPLE,delhi_pwd,28.628125359712367,77.21892389522377,hi,web,photo,"सड़क टूटी हुई है, रात को दिखाई नहीं देती",pothole,New Delhi,dl-janpath-pothole
+SAMPLE-DL-010,SAMPLE,delhi_pwd,28.527701767905963,77.2069595903045,en,web,photo,Outer Ring Road pothole cluster near the flyover ramp,pothole,South Delhi,dl-outerring-pothole
+SAMPLE-DL-011,SAMPLE,delhi_pwd,28.52760556132452,77.20696344509389,hi,web,photo,"दो लेन में गड्ढे, बाइक गिरने का डर",pothole,South Delhi,dl-outerring-pothole
+SAMPLE-DL-012,SAMPLE,delhi_pwd,28.527194587995293,77.20663197576245,en,web,photo,Outer Ring Road pothole cluster near the flyover ramp,pothole,South Delhi,dl-outerring-pothole
+SAMPLE-DL-013,SAMPLE,delhi_pwd,28.527716909953856,77.20681775927784,en,web,photo,"दो लेन में गड्ढे, बाइक गिरने का डर",pothole,South Delhi,dl-outerring-pothole
+SAMPLE-DL-014,SAMPLE,delhi_pwd,28.527602256123604,77.20673108833896,en,web,photo,Outer Ring Road pothole cluster near the flyover ramp,pothole,South Delhi,dl-outerring-pothole
+SAMPLE-DL-015,SAMPLE,delhi_pwd,28.527362762499582,77.20703766166247,hi,web,photo,"दो लेन में गड्ढे, बाइक गिरने का डर",pothole,South Delhi,dl-outerring-pothole
+SAMPLE-DL-016,SAMPLE,delhi_pwd,28.63647320244294,77.2875794964818,hi,web,photo,विकास मार्ग पर बारिश में कमर तक पानी,waterlogging,East Delhi,dl-vikasmarg-water
+SAMPLE-DL-017,SAMPLE,delhi_pwd,28.636157885192965,77.28719222507954,hi,web,photo,"Drain blocked, water sits for hours after rain",waterlogging,East Delhi,dl-vikasmarg-water
+SAMPLE-DL-018,SAMPLE,delhi_pwd,28.63629227920069,77.28754816280461,hi,web,photo,विकास मार्ग पर बारिश में कमर तक पानी,waterlogging,East Delhi,dl-vikasmarg-water
+SAMPLE-DL-019,SAMPLE,delhi_pwd,28.636086491907616,77.28729870362083,en,web,photo,"Drain blocked, water sits for hours after rain",waterlogging,East Delhi,dl-vikasmarg-water
+SAMPLE-DL-020,SAMPLE,delhi_pwd,28.63636664148094,77.28737333074866,hi,web,photo,विकास मार्ग पर बारिश में कमर तक पानी,waterlogging,East Delhi,dl-vikasmarg-water
+SAMPLE-DL-021,SAMPLE,delhi_pwd,28.6362358595754,77.28762509079412,hi,web,photo,"Drain blocked, water sits for hours after rain",waterlogging,East Delhi,dl-vikasmarg-water
+SAMPLE-DL-022,SAMPLE,delhi_pwd,28.636302960915295,77.28729359179442,hi,web,photo,विकास मार्ग पर बारिश में कमर तक पानी,waterlogging,East Delhi,dl-vikasmarg-water
+SAMPLE-DL-023,SAMPLE,delhi_pwd,28.632748376483434,77.21932144713156,en,web,photo,Streetlight dead on this stretch since last week,streetlight,New Delhi,dl-cp-streetlight
+SAMPLE-DL-024,SAMPLE,delhi_pwd,28.632566888911896,77.21928326096148,hi,web,photo,"बत्ती खराब, अंधेरा, महिलाएँ डरती हैं",streetlight,New Delhi,dl-cp-streetlight
+SAMPLE-DL-025,SAMPLE,delhi_pwd,28.6326915006071,77.21924364393551,en,web,photo,Streetlight dead on this stretch since last week,streetlight,New Delhi,dl-cp-streetlight
+SAMPLE-DL-026,SAMPLE,delhi_pwd,28.6327970073326,77.21958240707494,en,web,photo,"बत्ती खराब, अंधेरा, महिलाएँ डरती हैं",streetlight,New Delhi,dl-cp-streetlight
+SAMPLE-DL-027,SAMPLE,delhi_pwd,28.632480203236234,77.21968740963291,en,web,photo,Streetlight dead on this stretch since last week,streetlight,New Delhi,dl-cp-streetlight
+SAMPLE-DL-028,SAMPLE,delhi_pwd,28.537683619639605,77.21663040844909,hi,web,photo,"फुटपाथ टूटा, व्हीलचेयर नहीं जा सकती",footpath,South Delhi,dl-press-footpath
+SAMPLE-DL-029,SAMPLE,delhi_pwd,28.537848923838396,77.21716341276337,hi,web,photo,"Broken footpath tiles, people walking on the carriageway",footpath,South Delhi,dl-press-footpath
+SAMPLE-DL-030,SAMPLE,delhi_pwd,28.53821045247139,77.21700979497005,hi,web,photo,"फुटपाथ टूटा, व्हीलचेयर नहीं जा सकती",footpath,South Delhi,dl-press-footpath
+SAMPLE-DL-031,SAMPLE,delhi_pwd,28.538042981236025,77.21688040855832,en,web,photo,"Broken footpath tiles, people walking on the carriageway",footpath,South Delhi,dl-press-footpath
+SAMPLE-DL-032,SAMPLE,delhi_pwd,28.5616628490119,77.20680176506673,en,web,photo,Open drain overflowing onto Aurobindo Marg after rain,drainage,South Delhi,dl-aurobindo-drain
+SAMPLE-DL-033,SAMPLE,delhi_pwd,28.56174754785253,77.20641074906942,hi,web,photo,Open drain overflowing onto Aurobindo Marg after rain,drainage,South Delhi,dl-aurobindo-drain
+SAMPLE-DL-034,SAMPLE,delhi_pwd,28.561608382629316,77.20690099842054,en,web,photo,Open drain overflowing onto Aurobindo Marg after rain,drainage,South Delhi,dl-aurobindo-drain
+SAMPLE-DL-035,SAMPLE,delhi_pwd,28.609920868785814,77.229907575713,en,web,photo,Isolated pothole near C-Hexagon,pothole,New Delhi,dl-single-1
+SAMPLE-DL-036,SAMPLE,delhi_pwd,28.589990278224942,77.25020722567987,hi,web,photo,स्ट्रीटलाइट फ्यूज,streetlight,South Delhi,dl-single-2
+SAMPLE-DL-037,SAMPLE,delhi_pwd,28.649909095679828,77.30028609270845,en,web,photo,Footpath missing on this side of the road,footpath,East Delhi,dl-single-3
+SAMPLE-DL-038,SAMPLE,delhi_pwd,28.619964249453933,77.2797354197333,hi,web,photo,"नाला चोक, पानी रुकता है",waterlogging,East Delhi,dl-single-4
+SAMPLE-DL-039,SAMPLE,delhi_pwd,28.55027393661521,77.18971896989244,en,web,photo,"Culvert mouth silted, water spills onto the service lane",culvert,South Delhi,dl-single-5
+SAMPLE-DL-040,SAMPLE,delhi_pwd,28.640201865262593,77.21024131153304,hi,web,photo,"गड्ढा, स्कूल के बाहर",pothole,New Delhi,dl-single-6
+SAMPLE-DL-041,SAMPLE,delhi_pwd,28.569770536217344,77.22014604102262,en,web,photo,Two poles dark on this bend,streetlight,South Delhi,dl-single-7
+SAMPLE-DL-042,SAMPLE,delhi_pwd,28.630019021130842,77.31021601661625,hi,web,photo,नाली कवर गायब,drainage,East Delhi,dl-single-8
+SAMPLE-DL-043,SAMPLE,delhi_pwd,28.600691815779207,77.1978632827406,en,web,photo,Pothole on this carriageway after the lights,pothole,New Delhi,dl-scatter-1
+SAMPLE-DL-044,SAMPLE,delhi_pwd,28.618043777799564,77.24105449188849,hi,web,photo,"गड्ढा, बस रुकने के पास",pothole,New Delhi,dl-scatter-2
+SAMPLE-DL-045,SAMPLE,delhi_pwd,28.54220207087109,77.19811544159572,en,web,photo,Rutting and pothole on the service road,pothole,South Delhi,dl-scatter-3
+SAMPLE-DL-046,SAMPLE,delhi_pwd,28.55077225190904,77.23085965762813,hi,web,photo,सड़क धँसी हुई है,pothole,South Delhi,dl-scatter-4
+SAMPLE-DL-047,SAMPLE,delhi_pwd,28.60519699453373,77.26830995114582,en,web,photo,"Pole dark, no light on the footpath",streetlight,East Delhi,dl-scatter-5
+SAMPLE-DL-048,SAMPLE,delhi_pwd,28.641207902038026,77.1978053247346,hi,web,photo,"लाइट फ्यूज, चौराहा अंधेरा",streetlight,New Delhi,dl-scatter-6
+SAMPLE-DL-049,SAMPLE,delhi_pwd,28.57180551064081,77.251161638008,en,web,photo,Streetlight flickers then dies,streetlight,South Delhi,dl-scatter-7
+SAMPLE-DL-050,SAMPLE,delhi_pwd,28.62296198283115,77.19792621897541,hi,web,photo,"फुटपाथ पर गड्ढे, बुजुर्ग गिरे",footpath,New Delhi,dl-scatter-8
+SAMPLE-DL-051,SAMPLE,delhi_pwd,28.648175494253994,77.27427964027677,en,web,photo,Encroached and broken footpath,footpath,East Delhi,dl-scatter-9
+SAMPLE-DL-052,SAMPLE,delhi_pwd,28.61117247571971,77.30115365299909,hi,web,photo,बारिश में सड़क तालाब,waterlogging,East Delhi,dl-scatter-10
+SAMPLE-DL-053,SAMPLE,delhi_pwd,28.53423418116899,77.22114790368431,en,web,photo,Underpass floods every monsoon,waterlogging,South Delhi,dl-scatter-11
+SAMPLE-DL-054,SAMPLE,delhi_pwd,28.618733073308444,77.27681895037068,hi,web,photo,"नाली जाम, बदबू",drainage,East Delhi,dl-scatter-12
+SAMPLE-DL-055,SAMPLE,delhi_pwd,28.598142459970955,77.22079994472165,en,web,photo,Cover missing on the roadside drain,drainage,New Delhi,dl-scatter-13
+SAMPLE-DL-056,SAMPLE,delhi_pwd,28.529213627074697,77.18927737482741,en,web,photo,Culvert blocked with silt and plastic,culvert,South Delhi,dl-scatter-14
+SAMPLE-DL-057,SAMPLE,delhi_pwd,28.63327479319803,77.25504930003117,hi,web,photo,गड्ढे की कतार,pothole,East Delhi,dl-scatter-15
+SAMPLE-DL-058,SAMPLE,delhi_pwd,28.558064709982414,77.18922352202664,en,web,photo,Three lights out on this curve,streetlight,South Delhi,dl-scatter-16
+SAMPLE-DL-059,SAMPLE,delhi_pwd,28.566988014331326,77.24102148610395,hi,web,photo,टाइल्स उखड़ी हुई हैं,footpath,South Delhi,dl-scatter-17
+SAMPLE-DL-060,SAMPLE,delhi_pwd,28.62525951134681,77.20795281709002,en,web,photo,Loose manhole cover on the stretch,other,New Delhi,dl-scatter-18
