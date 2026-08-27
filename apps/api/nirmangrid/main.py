@@ -70,7 +70,7 @@ def clusters(tenant: Optional[TenantId] = None, id: Optional[str] = None):
 
 
 @app.post("/api/ingest")
-def ingest(body: IngestIn):
+async def ingest(body: IngestIn):
     if not gemini_ready():
         raise HTTPException(
             status_code=503,
@@ -117,7 +117,7 @@ def ingest(body: IngestIn):
 
 
 @app.post("/api/elevate")
-def elevate(body: ElevateIn):
+async def elevate(body: ElevateIn):
     cluster = store.get_cluster(body.cluster_id)
     if not cluster:
         raise HTTPException(404, "not found")

@@ -1,15 +1,19 @@
 from __future__ import annotations
 
+import base64
 import json
 import os
-from pathlib import Path
 
 from dotenv import load_dotenv
+from google import genai
+from google.genai import types
 
 from .paths import repo_root
 from .schemas import Classification, Cluster
 
 load_dotenv(repo_root() / ".env")
+
+DEFAULT_MODEL = "gemini-flash-latest"
 
 
 def gemini_ready() -> bool:
@@ -20,18 +24,15 @@ def _prompt(name: str) -> str:
     return (repo_root() / "prompts" / name).read_text(encoding="utf-8")
 
 
-def _model():
-    import google.generativeai as genai
-
+def _api_key() -> str:
     key = os.getenv("GEMINI_API_KEY")
     if not key:
         raise RuntimeError("GEMINI_API_KEY is not set")
-    genai.configure(api_key=key)
-    return genai.GenerativeModel(
-        os.getenv("GEMINI_MODEL", "gemini-2.0-flash"),
-        system_instruction=_prompt("classify.md"),
-        generation_config={"response_mime_type": "application/json", "temperature": 0.2},
-    )
+    return key
+
+
+def _model_name() -> str:
+    return os.getenv("GEMINI_MODEL") or DEFAULT_MODEL
 
 
 def _parse_json(raw: str) -> dict:
@@ -42,30 +43,41 @@ def _parse_json(raw: str) -> dict:
 
 
 def classify_demand(text: str, mime_type: str | None = None, image_base64: str | None = None) -> Classification:
-    model = _model()
-    parts: list = [text or "(no text; classify from the photo only)"]
+    parts: list[types.Part] = [
+        types.Part(text=text or "(no text; classify from the photo only)")
+    ]
     if image_base64 and mime_type:
-        parts.append({"mime_type": mime_type, "data": image_base64})
-    result = model.generate_content(parts)
-    parsed = _parse_json(result.text)
+        parts.append(
+            types.Part.from_bytes(
+                data=base64.b64decode(image_base64),
+                mime_type=mime_type,
+            )
+        )
+    with genai.Client(api_key=_api_key()) as client:
+        result = client.models.generate_content(
+            model=_model_name(),
+            contents=parts,
+            config=types.GenerateContentConfig(
+                system_instruction=_prompt("classify.md"),
+                response_mime_type="application/json",
+                temperature=0.2,
+            ),
+        )
+    parsed = _parse_json(result.text or "")
     parsed.pop("priority_score", None)
     return Classification.model_validate(parsed)
 
 
 def write_ministry_note(cluster: Cluster) -> str:
-    import google.generativeai as genai
-
-    key = os.getenv("GEMINI_API_KEY")
-    if not key:
-        raise RuntimeError("GEMINI_API_KEY is not set")
-    genai.configure(api_key=key)
-    model = genai.GenerativeModel(
-        os.getenv("GEMINI_MODEL", "gemini-2.0-flash"),
-        system_instruction=(repo_root() / "prompts" / "ministry_note.md").read_text(encoding="utf-8"),
-        generation_config={"temperature": 0.2},
-    )
     payload = cluster.model_dump()
-    result = model.generate_content(
-        "Write the 12-line note from this SQL score JSON:\n" + json.dumps(payload, ensure_ascii=False, indent=2)
-    )
+    with genai.Client(api_key=_api_key()) as client:
+        result = client.models.generate_content(
+            model=_model_name(),
+            contents="Write the 12-line note from this SQL score JSON:\n"
+            + json.dumps(payload, ensure_ascii=False, indent=2),
+            config=types.GenerateContentConfig(
+                system_instruction=_prompt("ministry_note.md"),
+                temperature=0.2,
+            ),
+        )
     return (result.text or "").strip()
