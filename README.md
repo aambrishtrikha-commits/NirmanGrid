@@ -86,17 +86,19 @@ Open http://127.0.0.1:3000
 - `/citizen` — photo + pin + text. Gemini classifies. No priority_score in that JSON.
 - `/ops` — Delhi SAMPLE clusters, SQL score drawer, elevate.
 - `/national` — ranked shelf across tenants.
-- `/api/health` — proxied to the Python API (`engine: python`, 60 SAMPLE events)
+- `/api/health` — proxied to the Python API (`engine: python`, SAMPLE events)
 
 Without `GEMINI_API_KEY`, the map and scores still run. Filing a live report or elevating returns 503. We do not stub Gemini.
 
 ### What you deploy
 
+Two Cloud Run services in **console.cloud.google.com** (same `GCP_PROJECT`). Full steps: `docs/DEPLOY.md`.
+
 ```bash
 gcloud builds submit --config infra/cloudbuild.yaml
 ```
 
-Set `GEMINI_API_KEY` on the Cloud Run service. Do not put it in git.
+Create Secret Manager secret `GEMINI_API_KEY` first. Do not put the key in git.
 
 ## Licence
 

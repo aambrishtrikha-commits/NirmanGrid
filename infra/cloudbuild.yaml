@@ -1,29 +1,46 @@
+# Two Cloud Run services: Python engine + Next.js UI.
+# Create secret GEMINI_API_KEY first. See docs/DEPLOY.md.
+
+substitutions:
+  _REGION: asia-south1
+  _API_IMAGE: gcr.io/${PROJECT_ID}/nirmangrid-api:latest
+  _WEB_IMAGE: gcr.io/${PROJECT_ID}/nirmangrid-web:latest
+
 steps:
   - name: gcr.io/cloud-builders/docker
-    args:
-      - build
-      - -t
-      - ${_IMAGE}
-      - -f
-      - infra/Dockerfile
-      - .
+    args: [build, -t, ${_API_IMAGE}, -f, infra/Dockerfile.api, .]
   - name: gcr.io/cloud-builders/docker
-    args: [push, ${_IMAGE}]
+    args: [build, -t, ${_WEB_IMAGE}, -f, infra/Dockerfile, .]
+  - name: gcr.io/cloud-builders/docker
+    args: [push, ${_API_IMAGE}]
+  - name: gcr.io/cloud-builders/docker
+    args: [push, ${_WEB_IMAGE}]
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: gcloud
+    entrypoint: bash
     args:
-      - run
-      - deploy
-      - nirmangrid
-      - --image
-      - ${_IMAGE}
-      - --region
-      - ${_REGION}
-      - --allow-unauthenticated
-      - --set-env-vars
-      - GCP_PROJECT=$PROJECT_ID
-substitutions:
-  _IMAGE: gcr.io/${PROJECT_ID}/nirmangrid:latest
-  _REGION: asia-south1
+      - -c
+      - |
+        set -euo pipefail
+        gcloud run deploy nirmangrid-api \
+          --image ${_API_IMAGE} \
+          --region ${_REGION} \
+          --allow-unauthenticated \
+          --memory 2Gi \
+          --cpu 1 \
+          --timeout 300 \
+          --set-env-vars GCP_PROJECT=${PROJECT_ID},GEMINI_MODEL=gemini-flash-latest,REPO_ROOT=/app \
+          --set-secrets GEMINI_API_KEY=GEMINI_API_KEY:latest
+        API_URL=$$(gcloud run services describe nirmangrid-api --region ${_REGION} --format='value(status.url)')
+        echo "API_URL=$$API_URL"
+        gcloud run deploy nirmangrid-web \
+          --image ${_WEB_IMAGE} \
+          --region ${_REGION} \
+          --allow-unauthenticated \
+          --memory 512Mi \
+          --cpu 1 \
+          --timeout 300 \
+          --set-env-vars API_URL=$$API_URL,GCP_PROJECT=${PROJECT_ID}
+
 images:
-  - ${_IMAGE}
+  - ${_API_IMAGE}
+  - ${_WEB_IMAGE}
