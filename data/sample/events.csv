@@ -59,3 +59,109 @@ SAMPLE-DL-057,SAMPLE,delhi_pwd,28.63327479319803,77.25504930003117,hi,web,photo,
 SAMPLE-DL-058,SAMPLE,delhi_pwd,28.558064709982414,77.18922352202664,en,web,photo,Three lights out on this curve,streetlight,South Delhi,dl-scatter-16
 SAMPLE-DL-059,SAMPLE,delhi_pwd,28.566988014331326,77.24102148610395,hi,web,photo,टाइल्स उखड़ी हुई हैं,footpath,South Delhi,dl-scatter-17
 SAMPLE-DL-060,SAMPLE,delhi_pwd,28.62525951134681,77.20795281709002,en,web,photo,Loose manhole cover on the stretch,other,New Delhi,dl-scatter-18
+SAMPLE-RJ-001,SAMPLE,rajasthan_pwd,25.73499112094587,71.38832344208113,raj,web,photo,"पुलिया टूटी, बारिश में गाड़ी नहीं जाती",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-002,SAMPLE,rajasthan_pwd,25.735214201578877,71.38845555446196,hi,web,photo,"Culvert washed out, no all-weather access to the village",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-003,SAMPLE,rajasthan_pwd,25.73511758368385,71.38834047938423,raj,web,photo,"पाळिया टूट गयो, मॉनसून में रास्ता बंद",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-004,SAMPLE,rajasthan_pwd,25.735435785573763,71.38859616002541,raj,web,photo,"पुलिया टूटी, बारिश में गाड़ी नहीं जाती",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-005,SAMPLE,rajasthan_pwd,25.73528950134089,71.38819901315901,raj,web,photo,"Culvert washed out, no all-weather access to the village",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-006,SAMPLE,rajasthan_pwd,25.735052611647028,71.3886415677245,hi,web,photo,"पाळिया टूट गयो, मॉनसून में रास्ता बंद",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-007,SAMPLE,rajasthan_pwd,25.735447538785916,71.38827201253216,raj,web,photo,"पुलिया टूटी, बारिश में गाड़ी नहीं जाती",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-008,SAMPLE,rajasthan_pwd,25.735501838206545,71.38818484830404,hi,web,photo,"Culvert washed out, no all-weather access to the village",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-009,SAMPLE,rajasthan_pwd,25.735151483535503,71.38848264068307,raj,web,photo,"पाळिया टूट गयो, मॉनसून में रास्ता बंद",culvert,Barmer,rj-barmer-culvert
+SAMPLE-RJ-010,SAMPLE,rajasthan_pwd,25.75195390294153,71.39592168918877,hi,web,photo,"बाड़मेर सड़क पर गड्ढे, बस हिलती है",pothole,Barmer,rj-barmer-pothole
+SAMPLE-RJ-011,SAMPLE,rajasthan_pwd,25.75191627379741,71.39589664082362,hi,web,photo,Potholes on the Barmer approach road,pothole,Barmer,rj-barmer-pothole
+SAMPLE-RJ-012,SAMPLE,rajasthan_pwd,25.752302198798027,71.39628984231035,hi,web,photo,"बाड़मेर सड़क पर गड्ढे, बस हिलती है",pothole,Barmer,rj-barmer-pothole
+SAMPLE-RJ-013,SAMPLE,rajasthan_pwd,25.75229026982765,71.39598715524801,raj,web,photo,Potholes on the Barmer approach road,pothole,Barmer,rj-barmer-pothole
+SAMPLE-RJ-014,SAMPLE,rajasthan_pwd,25.752158319133425,71.39624121675574,hi,web,photo,"बाड़मेर सड़क पर गड्ढे, बस हिलती है",pothole,Barmer,rj-barmer-pothole
+SAMPLE-RJ-015,SAMPLE,rajasthan_pwd,25.75192553551194,71.39642970056619,hi,web,photo,Potholes on the Barmer approach road,pothole,Barmer,rj-barmer-pothole
+SAMPLE-RJ-016,SAMPLE,rajasthan_pwd,25.752414764532915,71.39621466556812,hi,web,photo,"बाड़मेर सड़क पर गड्ढे, बस हिलती है",pothole,Barmer,rj-barmer-pothole
+SAMPLE-RJ-017,SAMPLE,rajasthan_pwd,25.751853208025764,71.39602420143603,hi,web,photo,Potholes on the Barmer approach road,pothole,Barmer,rj-barmer-pothole
+SAMPLE-RJ-018,SAMPLE,rajasthan_pwd,26.239133383450422,73.02435537707265,hi,web,photo,"जोधपुर रिंग पर गड्ढा, रात को दिखता नहीं",pothole,Jodhpur,rj-jodhpur-pothole
+SAMPLE-RJ-019,SAMPLE,rajasthan_pwd,26.23881196347113,73.02399494816973,hi,web,photo,Jodhpur stretch pothole near the circle,pothole,Jodhpur,rj-jodhpur-pothole
+SAMPLE-RJ-020,SAMPLE,rajasthan_pwd,26.23898067775031,73.02429697553546,hi,web,photo,"जोधपुर रिंग पर गड्ढा, रात को दिखता नहीं",pothole,Jodhpur,rj-jodhpur-pothole
+SAMPLE-RJ-021,SAMPLE,rajasthan_pwd,26.238892343550475,73.02416702890493,raj,web,photo,Jodhpur stretch pothole near the circle,pothole,Jodhpur,rj-jodhpur-pothole
+SAMPLE-RJ-022,SAMPLE,rajasthan_pwd,26.23876542214326,73.02435622587836,hi,web,photo,"जोधपुर रिंग पर गड्ढा, रात को दिखता नहीं",pothole,Jodhpur,rj-jodhpur-pothole
+SAMPLE-RJ-023,SAMPLE,rajasthan_pwd,26.239052138685686,73.02410366479435,hi,web,photo,Jodhpur stretch pothole near the circle,pothole,Jodhpur,rj-jodhpur-pothole
+SAMPLE-RJ-024,SAMPLE,rajasthan_pwd,26.238885722488426,73.02450496741459,hi,web,photo,"जोधपुर रिंग पर गड्ढा, रात को दिखता नहीं",pothole,Jodhpur,rj-jodhpur-pothole
+SAMPLE-RJ-025,SAMPLE,rajasthan_pwd,26.238897833048412,73.0245296128357,hi,web,photo,Jodhpur stretch pothole near the circle,pothole,Jodhpur,rj-jodhpur-pothole
+SAMPLE-RJ-026,SAMPLE,rajasthan_pwd,26.269827099989712,73.00820550898763,hi,web,photo,"बारिश में पानी कमर तक, नाला चोक",waterlogging,Jodhpur,rj-jodhpur-water
+SAMPLE-RJ-027,SAMPLE,rajasthan_pwd,26.2700985346348,73.0083343173366,hi,web,photo,Underpass floods every monsoon in Jodhpur,waterlogging,Jodhpur,rj-jodhpur-water
+SAMPLE-RJ-028,SAMPLE,rajasthan_pwd,26.270313750555385,73.00836296391513,hi,web,photo,"बारिश में पानी कमर तक, नाला चोक",waterlogging,Jodhpur,rj-jodhpur-water
+SAMPLE-RJ-029,SAMPLE,rajasthan_pwd,26.270033333582422,73.00810052587279,raj,web,photo,Underpass floods every monsoon in Jodhpur,waterlogging,Jodhpur,rj-jodhpur-water
+SAMPLE-RJ-030,SAMPLE,rajasthan_pwd,26.27032314351235,73.00809190687595,hi,web,photo,"बारिश में पानी कमर तक, नाला चोक",waterlogging,Jodhpur,rj-jodhpur-water
+SAMPLE-RJ-031,SAMPLE,rajasthan_pwd,26.270137901869468,73.00870692868534,hi,web,photo,Underpass floods every monsoon in Jodhpur,waterlogging,Jodhpur,rj-jodhpur-water
+SAMPLE-RJ-032,SAMPLE,rajasthan_pwd,26.270248410123262,73.00853801212976,hi,web,photo,"बारिश में पानी कमर तक, नाला चोक",waterlogging,Jodhpur,rj-jodhpur-water
+SAMPLE-RJ-033,SAMPLE,rajasthan_pwd,26.91233408020897,75.78728316108298,hi,web,photo,"जयपुर में गड्ढे, ट्रैफिक जाम",pothole,Jaipur,rj-jaipur-pothole
+SAMPLE-RJ-034,SAMPLE,rajasthan_pwd,26.912299184242343,75.78741773933216,hi,web,photo,MI Road service lane pothole cluster,pothole,Jaipur,rj-jaipur-pothole
+SAMPLE-RJ-035,SAMPLE,rajasthan_pwd,26.912466387449633,75.78704146105822,hi,web,photo,"जयपुर में गड्ढे, ट्रैफिक जाम",pothole,Jaipur,rj-jaipur-pothole
+SAMPLE-RJ-036,SAMPLE,rajasthan_pwd,26.912230293266678,75.78729463176626,raj,web,photo,MI Road service lane pothole cluster,pothole,Jaipur,rj-jaipur-pothole
+SAMPLE-RJ-037,SAMPLE,rajasthan_pwd,26.91234205858272,75.7873515725315,hi,web,photo,"जयपुर में गड्ढे, ट्रैफिक जाम",pothole,Jaipur,rj-jaipur-pothole
+SAMPLE-RJ-038,SAMPLE,rajasthan_pwd,26.91248159423042,75.78713121822292,hi,web,photo,MI Road service lane pothole cluster,pothole,Jaipur,rj-jaipur-pothole
+SAMPLE-RJ-039,SAMPLE,rajasthan_pwd,26.912335083119743,75.78709710509428,hi,web,photo,"जयपुर में गड्ढे, ट्रैफिक जाम",pothole,Jaipur,rj-jaipur-pothole
+SAMPLE-RJ-040,SAMPLE,rajasthan_pwd,26.912507781130113,75.78704896172432,hi,web,photo,MI Road service lane pothole cluster,pothole,Jaipur,rj-jaipur-pothole
+SAMPLE-RJ-041,SAMPLE,rajasthan_pwd,26.8468303136143,75.80210141853645,en,web,photo,Streetlights dead on this Jaipur stretch,streetlight,Jaipur,rj-jaipur-light
+SAMPLE-RJ-042,SAMPLE,rajasthan_pwd,26.846694373266295,75.80222240224852,hi,web,photo,"लाइट फ्यूज, अंधेरा",streetlight,Jaipur,rj-jaipur-light
+SAMPLE-RJ-043,SAMPLE,rajasthan_pwd,26.846451983954932,75.80188453954511,en,web,photo,Streetlights dead on this Jaipur stretch,streetlight,Jaipur,rj-jaipur-light
+SAMPLE-RJ-044,SAMPLE,rajasthan_pwd,26.846606585928924,75.80228208401675,raj,web,photo,"लाइट फ्यूज, अंधेरा",streetlight,Jaipur,rj-jaipur-light
+SAMPLE-RJ-045,SAMPLE,rajasthan_pwd,26.84660072957028,75.80176223429274,en,web,photo,Streetlights dead on this Jaipur stretch,streetlight,Jaipur,rj-jaipur-light
+SAMPLE-RJ-046,SAMPLE,rajasthan_pwd,26.846856891700746,75.80205454354643,hi,web,photo,"लाइट फ्यूज, अंधेरा",streetlight,Jaipur,rj-jaipur-light
+SAMPLE-RJ-047,SAMPLE,rajasthan_pwd,25.69980020668638,71.44997024519935,hi,web,photo,"गड्ढा, गाँव की सड़क",pothole,Barmer,rj-scatter-1
+SAMPLE-RJ-048,SAMPLE,rajasthan_pwd,25.779832959521546,71.37021965263374,raj,web,photo,"नाली जाम, बदबू",drainage,Barmer,rj-scatter-2
+SAMPLE-RJ-049,SAMPLE,rajasthan_pwd,25.680097908468746,71.50012949703375,en,web,photo,Second culvert silted on this rural link,culvert,Barmer,rj-scatter-3
+SAMPLE-RJ-050,SAMPLE,rajasthan_pwd,25.750115721642374,71.40970771124279,hi,web,photo,बत्ती खराब,streetlight,Barmer,rj-scatter-4
+SAMPLE-RJ-051,SAMPLE,rajasthan_pwd,25.819957315570893,71.3299180706583,en,web,photo,"Rutted track, asks for all-weather road",pothole,Barmer,rj-scatter-5
+SAMPLE-RJ-052,SAMPLE,rajasthan_pwd,25.7501825573429,71.3899001245964,hi,web,photo,फुटपाथ नहीं,footpath,Barmer,rj-scatter-6
+SAMPLE-RJ-053,SAMPLE,rajasthan_pwd,25.7299200456128,71.41988753182261,raj,web,photo,बारिश में रास्ता तालाब,waterlogging,Barmer,rj-scatter-7
+SAMPLE-RJ-054,SAMPLE,rajasthan_pwd,25.759906913595096,71.35027839486396,en,web,photo,Open drain onto the carriageway,drainage,Barmer,rj-scatter-8
+SAMPLE-RJ-055,SAMPLE,rajasthan_pwd,25.70996030952521,71.48009885664848,hi,web,photo,गड्ढों की कतार,pothole,Barmer,rj-scatter-9
+SAMPLE-RJ-056,SAMPLE,rajasthan_pwd,25.69024717871015,71.36003135263059,en,web,photo,Culvert mouth blocked with sand,culvert,Barmer,rj-scatter-10
+SAMPLE-RJ-057,SAMPLE,rajasthan_pwd,25.740154288671096,71.39990528967274,hi,web,photo,मैनहोल कवर गायब,other,Barmer,rj-scatter-11
+SAMPLE-RJ-058,SAMPLE,rajasthan_pwd,25.76980702099166,71.43998741126217,en,web,photo,Shoulder broken after rain,pothole,Barmer,rj-scatter-12
+SAMPLE-RJ-059,SAMPLE,rajasthan_pwd,25.719922008180646,71.37976838208519,hi,web,photo,दो पोल अंधेरे,streetlight,Barmer,rj-scatter-13
+SAMPLE-RJ-060,SAMPLE,rajasthan_pwd,25.799924299106213,71.38976834130223,raj,web,photo,सड़क टूटी,pothole,Barmer,rj-scatter-14
+SAMPLE-RJ-061,SAMPLE,rajasthan_pwd,25.660221879428143,71.40988924757434,en,web,photo,"No side drain, water sits",drainage,Barmer,rj-scatter-15
+SAMPLE-RJ-062,SAMPLE,rajasthan_pwd,25.83999770343121,71.41970910882083,hi,web,photo,बस स्टॉप के पास गड्ढा,pothole,Barmer,rj-scatter-16
+SAMPLE-RJ-063,SAMPLE,rajasthan_pwd,25.629747537502602,71.46975944548967,en,web,photo,"Cause-way, not a culvert — all-weather request",culvert,Barmer,rj-scatter-17
+SAMPLE-RJ-064,SAMPLE,rajasthan_pwd,25.751188312540695,71.39204304323997,hi,web,photo,पैदल चलने की जगह नहीं,footpath,Barmer,rj-scatter-18
+SAMPLE-RJ-065,SAMPLE,rajasthan_pwd,25.78976264618809,71.3597190112129,en,web,photo,Patch failed in one monsoon,pothole,Barmer,rj-scatter-19
+SAMPLE-RJ-066,SAMPLE,rajasthan_pwd,25.740004379257627,71.43025863819493,hi,web,photo,नाला ओवरफ्लो,waterlogging,Barmer,rj-scatter-20
+SAMPLE-RJ-067,SAMPLE,rajasthan_pwd,26.289768403180418,73.04028475374902,hi,web,photo,"गड्ढा, स्कूल के बाहर",pothole,Jodhpur,rj-scatter-21
+SAMPLE-RJ-068,SAMPLE,rajasthan_pwd,26.250253245201215,73.0098808935097,en,web,photo,Two poles dark on this bend,streetlight,Jodhpur,rj-scatter-22
+SAMPLE-RJ-069,SAMPLE,rajasthan_pwd,26.22016732030704,73.02991402131983,hi,web,photo,फुटपाथ टूटा,footpath,Jodhpur,rj-scatter-23
+SAMPLE-RJ-070,SAMPLE,rajasthan_pwd,26.260282103542835,72.9897111359968,en,web,photo,Drain cover missing,drainage,Jodhpur,rj-scatter-24
+SAMPLE-RJ-071,SAMPLE,rajasthan_pwd,26.209922808056962,73.04968029026129,hi,web,photo,सड़क धँसी,pothole,Jodhpur,rj-scatter-25
+SAMPLE-RJ-072,SAMPLE,rajasthan_pwd,26.180254838743302,73.02015338861379,en,web,photo,Culvert silted on the outskirt road,culvert,Jodhpur,rj-scatter-26
+SAMPLE-RJ-073,SAMPLE,rajasthan_pwd,26.24007274246982,73.06003690700544,hi,web,photo,चौराहे पर पानी,waterlogging,Jodhpur,rj-scatter-27
+SAMPLE-RJ-074,SAMPLE,rajasthan_pwd,26.269874020554212,73.02992043260598,en,web,photo,Lights out after 9pm,streetlight,Jodhpur,rj-scatter-28
+SAMPLE-RJ-075,SAMPLE,rajasthan_pwd,26.23026550353115,72.97975209556427,hi,web,photo,"गड्ढे, बाइक गिरने का डर",pothole,Jodhpur,rj-scatter-29
+SAMPLE-RJ-076,SAMPLE,rajasthan_pwd,26.279944018823755,73.01025508582437,en,web,photo,Encroached footpath,footpath,Jodhpur,rj-scatter-30
+SAMPLE-RJ-077,SAMPLE,rajasthan_pwd,26.19994208907471,73.04030348795946,hi,web,photo,नाली चोक,drainage,Jodhpur,rj-scatter-31
+SAMPLE-RJ-078,SAMPLE,rajasthan_pwd,26.310246156220963,73.01986963222659,en,web,photo,Highway slip road pothole,pothole,Jodhpur,rj-scatter-32
+SAMPLE-RJ-079,SAMPLE,rajasthan_pwd,26.189982811286043,72.9998626930743,hi,web,photo,बत्ती फ्यूज,streetlight,Jodhpur,rj-scatter-33
+SAMPLE-RJ-080,SAMPLE,rajasthan_pwd,26.250277310393813,73.07015113692252,en,web,photo,Local ponding every rain,waterlogging,Jodhpur,rj-scatter-34
+SAMPLE-RJ-081,SAMPLE,rajasthan_pwd,26.2196965785316,73.06023875365007,hi,web,photo,रिंग रोड गड्ढा,pothole,Jodhpur,rj-scatter-35
+SAMPLE-RJ-082,SAMPLE,rajasthan_pwd,26.239703903266317,73.01023937882216,en,web,photo,Loose manhole,other,Jodhpur,rj-scatter-36
+SAMPLE-RJ-083,SAMPLE,rajasthan_pwd,26.159864185262315,72.9697164674929,hi,web,photo,पुलिया दबी हुई,culvert,Jodhpur,rj-scatter-37
+SAMPLE-RJ-084,SAMPLE,rajasthan_pwd,26.329757753508606,73.0502658109873,en,web,photo,Rutted shoulder,pothole,Jodhpur,rj-scatter-38
+SAMPLE-RJ-085,SAMPLE,rajasthan_pwd,26.21020202086669,73.02028407871295,hi,web,photo,तीन पोल अंधेरे,streetlight,Jodhpur,rj-scatter-39
+SAMPLE-RJ-086,SAMPLE,rajasthan_pwd,26.26986612012367,72.99986946819345,en,web,photo,Open drain smell,drainage,Jodhpur,rj-scatter-40
+SAMPLE-RJ-087,SAMPLE,rajasthan_pwd,26.890304479000694,75.80028330639075,hi,web,photo,"गड्ढा, सिग्नल के बाद",pothole,Jaipur,rj-scatter-41
+SAMPLE-RJ-088,SAMPLE,rajasthan_pwd,26.920099646315734,75.79023660812018,en,web,photo,"Broken tiles, people on carriageway",footpath,Jaipur,rj-scatter-42
+SAMPLE-RJ-089,SAMPLE,rajasthan_pwd,26.8502101019815,75.81012730923614,hi,web,photo,लाइट खराब,streetlight,Jaipur,rj-scatter-43
+SAMPLE-RJ-090,SAMPLE,rajasthan_pwd,26.91002224124276,75.76020481933938,en,web,photo,Underpass floods,waterlogging,Jaipur,rj-scatter-44
+SAMPLE-RJ-091,SAMPLE,rajasthan_pwd,26.939818020087234,75.81986740120512,hi,web,photo,सड़क टूटी,pothole,Jaipur,rj-scatter-45
+SAMPLE-RJ-092,SAMPLE,rajasthan_pwd,26.87982426982072,75.78025806798371,en,web,photo,Choked nala,drainage,Jaipur,rj-scatter-46
+SAMPLE-RJ-093,SAMPLE,rajasthan_pwd,26.899813342367146,75.80996491944833,hi,web,photo,व्हीलचेयर नहीं जा सकती,footpath,Jaipur,rj-scatter-47
+SAMPLE-RJ-094,SAMPLE,rajasthan_pwd,26.85983854227873,75.79020645771232,en,web,photo,Service lane pothole,pothole,Jaipur,rj-scatter-48
+SAMPLE-RJ-095,SAMPLE,rajasthan_pwd,26.92979682356792,75.77026946610485,hi,web,photo,अंधेरा चौराहा,streetlight,Jaipur,rj-scatter-49
+SAMPLE-RJ-096,SAMPLE,rajasthan_pwd,26.84009743484219,75.83019251223593,en,web,photo,Culvert mouth plastic-clogged,culvert,Jaipur,rj-scatter-50
+SAMPLE-RJ-097,SAMPLE,rajasthan_pwd,26.95002592718959,75.80022729102582,hi,web,photo,गड्ढों की लाइन,pothole,Jaipur,rj-scatter-51
+SAMPLE-RJ-098,SAMPLE,rajasthan_pwd,26.87020352831887,75.81988251446428,en,web,photo,Cover missing,drainage,Jaipur,rj-scatter-52
+SAMPLE-RJ-099,SAMPLE,rajasthan_pwd,26.910157739333865,75.84006762854267,hi,web,photo,फुटपाथ पर गड्ढे,footpath,Jaipur,rj-scatter-53
+SAMPLE-RJ-100,SAMPLE,rajasthan_pwd,26.88976363835692,75.7598710373548,en,web,photo,Flicker then die,streetlight,Jaipur,rj-scatter-54
+SAMPLE-RJ-101,SAMPLE,rajasthan_pwd,26.860146603634114,75.77020977025254,hi,web,photo,बारिश में तालाब,waterlogging,Jaipur,rj-scatter-55
+SAMPLE-RJ-102,SAMPLE,rajasthan_pwd,26.930048937512645,75.81014799851562,en,web,photo,Bus stop pothole,pothole,Jaipur,rj-scatter-56
+SAMPLE-RJ-103,SAMPLE,rajasthan_pwd,26.900071127055323,75.78014936669939,hi,web,photo,मैनहोल ढीला,other,Jaipur,rj-scatter-57
+SAMPLE-RJ-104,SAMPLE,rajasthan_pwd,26.879976306948958,75.84977807857139,en,web,photo,Patch failed,pothole,Jaipur,rj-scatter-58
+SAMPLE-RJ-105,SAMPLE,rajasthan_pwd,26.920057807598383,75.75026858033175,hi,web,photo,दो पोल बंद,streetlight,Jaipur,rj-scatter-59
+SAMPLE-RJ-106,SAMPLE,rajasthan_pwd,26.93969889299466,75.79028075681124,en,web,photo,No footpath this side,footpath,Jaipur,rj-scatter-60

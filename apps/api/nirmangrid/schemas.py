@@ -92,6 +92,7 @@ class IngestIn(BaseModel):
     text: str = ""
     lang: Lang | None = None
     photo: PhotoIn | None = None
+    audio: PhotoIn | None = None
 
 
 class ElevateIn(BaseModel):

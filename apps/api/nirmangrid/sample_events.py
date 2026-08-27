@@ -127,12 +127,24 @@ def jitter(i: int, scale: float = 0.00032) -> tuple[float, float]:
     return (a - math.floor(a) - 0.5) * 2 * scale, (b - math.floor(b) - 0.5) * 2 * scale
 
 
-def _ticket(n: int, cluster: str, kind: str, lat: float, lng: float, district: str, lang: str, text: str) -> Ticket:
+def _ticket(
+    n: int,
+    cluster: str,
+    kind: str,
+    lat: float,
+    lng: float,
+    district: str,
+    lang: str,
+    text: str,
+    *,
+    tenant_id: str = "delhi_pwd",
+    prefix: str = "SAMPLE-DL",
+) -> Ticket:
     created = datetime(2026, 8, 20, 6, 0, tzinfo=timezone.utc) + timedelta(hours=n)
     severity = "high" if kind in {"waterlogging", "culvert"} else "medium"
     return Ticket(
-        id=f"SAMPLE-DL-{n:03d}",
-        tenant_id="delhi_pwd",
+        id=f"{prefix}-{n:03d}",
+        tenant_id=tenant_id,  # type: ignore[arg-type]
         lat=lat,
         lng=lng,
         text=text,
@@ -188,8 +200,201 @@ def delhi_sample_tickets() -> list[Ticket]:
     return out
 
 
+RJ_SEEDS = [
+    {
+        "cluster": "rj-barmer-culvert",
+        "n": 9,
+        "type": "culvert",
+        "lat": 25.7352,
+        "lng": 71.3884,
+        "district": "Barmer",
+        "lang": "raj",
+        "texts": [
+            "पुलिया टूटी, बारिश में गाड़ी नहीं जाती",
+            "Culvert washed out, no all-weather access to the village",
+            "पाळिया टूट गयो, मॉनसून में रास्ता बंद",
+        ],
+    },
+    {
+        "cluster": "rj-barmer-pothole",
+        "n": 8,
+        "type": "pothole",
+        "lat": 25.7521,
+        "lng": 71.3962,
+        "district": "Barmer",
+        "lang": "hi",
+        "texts": [
+            "बाड़मेर सड़क पर गड्ढे, बस हिलती है",
+            "Potholes on the Barmer approach road",
+        ],
+    },
+    {
+        "cluster": "rj-jodhpur-pothole",
+        "n": 8,
+        "type": "pothole",
+        "lat": 26.2389,
+        "lng": 73.0243,
+        "district": "Jodhpur",
+        "lang": "hi",
+        "texts": [
+            "जोधपुर रिंग पर गड्ढा, रात को दिखता नहीं",
+            "Jodhpur stretch pothole near the circle",
+        ],
+    },
+    {
+        "cluster": "rj-jodhpur-water",
+        "n": 7,
+        "type": "waterlogging",
+        "lat": 26.2701,
+        "lng": 73.0084,
+        "district": "Jodhpur",
+        "lang": "hi",
+        "texts": [
+            "बारिश में पानी कमर तक, नाला चोक",
+            "Underpass floods every monsoon in Jodhpur",
+        ],
+    },
+    {
+        "cluster": "rj-jaipur-pothole",
+        "n": 8,
+        "type": "pothole",
+        "lat": 26.9124,
+        "lng": 75.7873,
+        "district": "Jaipur",
+        "lang": "hi",
+        "texts": [
+            "जयपुर में गड्ढे, ट्रैफिक जाम",
+            "MI Road service lane pothole cluster",
+        ],
+    },
+    {
+        "cluster": "rj-jaipur-light",
+        "n": 6,
+        "type": "streetlight",
+        "lat": 26.8467,
+        "lng": 75.8020,
+        "district": "Jaipur",
+        "lang": "en",
+        "texts": [
+            "Streetlights dead on this Jaipur stretch",
+            "लाइट फ्यूज, अंधेरा",
+        ],
+    },
+]
+
+RJ_SCATTER = [
+    ("pothole", 25.70, 71.45, "Barmer", "hi", "गड्ढा, गाँव की सड़क"),
+    ("drainage", 25.78, 71.37, "Barmer", "raj", "नाली जाम, बदबू"),
+    ("culvert", 25.68, 71.50, "Barmer", "en", "Second culvert silted on this rural link"),
+    ("streetlight", 25.75, 71.41, "Barmer", "hi", "बत्ती खराब"),
+    ("pothole", 25.82, 71.33, "Barmer", "en", "Rutted track, asks for all-weather road"),
+    ("footpath", 25.75, 71.39, "Barmer", "hi", "फुटपाथ नहीं"),
+    ("waterlogging", 25.73, 71.42, "Barmer", "raj", "बारिश में रास्ता तालाब"),
+    ("drainage", 25.76, 71.35, "Barmer", "en", "Open drain onto the carriageway"),
+    ("pothole", 25.71, 71.48, "Barmer", "hi", "गड्ढों की कतार"),
+    ("culvert", 25.69, 71.36, "Barmer", "en", "Culvert mouth blocked with sand"),
+    ("other", 25.74, 71.40, "Barmer", "hi", "मैनहोल कवर गायब"),
+    ("pothole", 25.77, 71.44, "Barmer", "en", "Shoulder broken after rain"),
+    ("streetlight", 25.72, 71.38, "Barmer", "hi", "दो पोल अंधेरे"),
+    ("pothole", 25.80, 71.39, "Barmer", "raj", "सड़क टूटी"),
+    ("drainage", 25.66, 71.41, "Barmer", "en", "No side drain, water sits"),
+    ("pothole", 25.84, 71.42, "Barmer", "hi", "बस स्टॉप के पास गड्ढा"),
+    ("culvert", 25.63, 71.47, "Barmer", "en", "Cause-way, not a culvert — all-weather request"),
+    ("footpath", 25.751, 71.392, "Barmer", "hi", "पैदल चलने की जगह नहीं"),
+    ("pothole", 25.79, 71.36, "Barmer", "en", "Patch failed in one monsoon"),
+    ("waterlogging", 25.74, 71.43, "Barmer", "hi", "नाला ओवरफ्लो"),
+    ("pothole", 26.29, 73.04, "Jodhpur", "hi", "गड्ढा, स्कूल के बाहर"),
+    ("streetlight", 26.25, 73.01, "Jodhpur", "en", "Two poles dark on this bend"),
+    ("footpath", 26.22, 73.03, "Jodhpur", "hi", "फुटपाथ टूटा"),
+    ("drainage", 26.26, 72.99, "Jodhpur", "en", "Drain cover missing"),
+    ("pothole", 26.21, 73.05, "Jodhpur", "hi", "सड़क धँसी"),
+    ("culvert", 26.18, 73.02, "Jodhpur", "en", "Culvert silted on the outskirt road"),
+    ("waterlogging", 26.24, 73.06, "Jodhpur", "hi", "चौराहे पर पानी"),
+    ("streetlight", 26.27, 73.03, "Jodhpur", "en", "Lights out after 9pm"),
+    ("pothole", 26.23, 72.98, "Jodhpur", "hi", "गड्ढे, बाइक गिरने का डर"),
+    ("footpath", 26.28, 73.01, "Jodhpur", "en", "Encroached footpath"),
+    ("drainage", 26.20, 73.04, "Jodhpur", "hi", "नाली चोक"),
+    ("pothole", 26.31, 73.02, "Jodhpur", "en", "Highway slip road pothole"),
+    ("streetlight", 26.19, 73.00, "Jodhpur", "hi", "बत्ती फ्यूज"),
+    ("waterlogging", 26.25, 73.07, "Jodhpur", "en", "Local ponding every rain"),
+    ("pothole", 26.22, 73.06, "Jodhpur", "hi", "रिंग रोड गड्ढा"),
+    ("other", 26.24, 73.01, "Jodhpur", "en", "Loose manhole"),
+    ("culvert", 26.16, 72.97, "Jodhpur", "hi", "पुलिया दबी हुई"),
+    ("pothole", 26.33, 73.05, "Jodhpur", "en", "Rutted shoulder"),
+    ("streetlight", 26.21, 73.02, "Jodhpur", "hi", "तीन पोल अंधेरे"),
+    ("drainage", 26.27, 73.00, "Jodhpur", "en", "Open drain smell"),
+    ("pothole", 26.89, 75.80, "Jaipur", "hi", "गड्ढा, सिग्नल के बाद"),
+    ("footpath", 26.92, 75.79, "Jaipur", "en", "Broken tiles, people on carriageway"),
+    ("streetlight", 26.85, 75.81, "Jaipur", "hi", "लाइट खराब"),
+    ("waterlogging", 26.91, 75.76, "Jaipur", "en", "Underpass floods"),
+    ("pothole", 26.94, 75.82, "Jaipur", "hi", "सड़क टूटी"),
+    ("drainage", 26.88, 75.78, "Jaipur", "en", "Choked nala"),
+    ("footpath", 26.90, 75.81, "Jaipur", "hi", "व्हीलचेयर नहीं जा सकती"),
+    ("pothole", 26.86, 75.79, "Jaipur", "en", "Service lane pothole"),
+    ("streetlight", 26.93, 75.77, "Jaipur", "hi", "अंधेरा चौराहा"),
+    ("culvert", 26.84, 75.83, "Jaipur", "en", "Culvert mouth plastic-clogged"),
+    ("pothole", 26.95, 75.80, "Jaipur", "hi", "गड्ढों की लाइन"),
+    ("drainage", 26.87, 75.82, "Jaipur", "en", "Cover missing"),
+    ("footpath", 26.91, 75.84, "Jaipur", "hi", "फुटपाथ पर गड्ढे"),
+    ("streetlight", 26.89, 75.76, "Jaipur", "en", "Flicker then die"),
+    ("waterlogging", 26.86, 75.77, "Jaipur", "hi", "बारिश में तालाब"),
+    ("pothole", 26.93, 75.81, "Jaipur", "en", "Bus stop pothole"),
+    ("other", 26.90, 75.78, "Jaipur", "hi", "मैनहोल ढीला"),
+    ("pothole", 26.88, 75.85, "Jaipur", "en", "Patch failed"),
+    ("streetlight", 26.92, 75.75, "Jaipur", "hi", "दो पोल बंद"),
+    ("footpath", 26.94, 75.79, "Jaipur", "en", "No footpath this side"),
+]
+
+
+def rajasthan_sample_tickets() -> list[Ticket]:
+    out: list[Ticket] = []
+    n = 0
+    for seed in RJ_SEEDS:
+        for i in range(seed["n"]):
+            n += 1
+            d_lat, d_lng = jitter(n + 200)
+            lang = seed["lang"] if i % 2 == 0 else ("hi" if i % 3 else "raj")
+            text = seed["texts"][i % len(seed["texts"])]
+            out.append(
+                _ticket(
+                    n,
+                    seed["cluster"],
+                    seed["type"],
+                    seed["lat"] + d_lat,
+                    seed["lng"] + d_lng,
+                    seed["district"],
+                    lang,
+                    text,
+                    tenant_id="rajasthan_pwd",
+                    prefix="SAMPLE-RJ",
+                )
+            )
+    for idx, (kind, lat, lng, district, lang, text) in enumerate(RJ_SCATTER, start=1):
+        n += 1
+        d_lat, d_lng = jitter(n + 300)
+        out.append(
+            _ticket(
+                n,
+                f"rj-scatter-{idx}",
+                kind,
+                lat + d_lat,
+                lng + d_lng,
+                district,
+                lang,
+                text,
+                tenant_id="rajasthan_pwd",
+                prefix="SAMPLE-RJ",
+            )
+        )
+    return out
+
+
+def all_sample_tickets() -> list[Ticket]:
+    return delhi_sample_tickets() + rajasthan_sample_tickets()
+
+
 def write_sample_files(out_dir: Path | None = None) -> dict:
-    tickets = delhi_sample_tickets()
+    tickets = all_sample_tickets()
     folder = out_dir or (repo_root() / "data" / "sample")
     folder.mkdir(parents=True, exist_ok=True)
     payload = [t.model_dump() for t in tickets]

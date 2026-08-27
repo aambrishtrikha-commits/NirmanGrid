@@ -40,6 +40,9 @@ data/raw/**/*.shp
 data/raw/**/*.shx
 data/raw/**/*.dbf
 data/raw/**/*.prj
+data/raw/**/*.zip
+data/raw/*.zip
+data/raw/pmgsy/extracted/
 apps/web/.next/
 apps/web/node_modules/
 apps/web/tsconfig.tsbuildinfo

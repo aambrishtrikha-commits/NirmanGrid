@@ -3,7 +3,7 @@ from __future__ import annotations
 import time
 from collections import defaultdict
 
-from .sample_events import delhi_sample_tickets
+from .sample_events import all_sample_tickets
 from .schemas import Cluster, TenantId, Ticket
 from .score import cluster_radius_meters, haversine_meters, to_cluster
 from .tenants import district_for_point
@@ -14,7 +14,7 @@ _tickets: dict[str, Ticket] = {}
 def seed() -> None:
     if _tickets:
         return
-    for ticket in delhi_sample_tickets():
+    for ticket in all_sample_tickets():
         _tickets[ticket.id] = ticket
 
 

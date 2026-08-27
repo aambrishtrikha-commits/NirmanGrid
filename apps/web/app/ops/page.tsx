@@ -68,8 +68,8 @@ export default function OpsPage() {
           <div className="cluster-list">
             {clusters.length === 0 ? (
               <div className="card">
-                No clusters on this tenant yet. Delhi SAMPLE events are preloaded.
-                Rajasthan highways load in week 2.
+                No clusters on this tenant yet. Delhi and Rajasthan SAMPLE events
+                should preload. Check the Python API is running.
               </div>
             ) : null}
             {clusters.map((c) => (

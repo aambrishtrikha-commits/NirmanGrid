@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from nirmangrid.sample_events import delhi_sample_tickets
+from nirmangrid.sample_events import all_sample_tickets, delhi_sample_tickets, rajasthan_sample_tickets
 from nirmangrid.schemas import Classification, Ticket
 from nirmangrid.score import WEIGHTS, score_cluster, to_cluster
 
@@ -38,6 +38,16 @@ def test_sample_count_is_sixty():
     tickets = delhi_sample_tickets()
     assert len(tickets) == 60
     assert all(t.source == "SAMPLE" for t in tickets)
+
+
+def test_rajasthan_samples_and_barmer_culvert():
+    rj = rajasthan_sample_tickets()
+    assert all(t.tenant_id == "rajasthan_pwd" and t.source == "SAMPLE" for t in rj)
+    assert {t.district for t in rj} == {"Jaipur", "Jodhpur", "Barmer"}
+    culvert = [t for t in rj if t.cluster_id == "rj-barmer-culvert"]
+    assert len(culvert) == 9
+    combined = all_sample_tickets()
+    assert len(combined) == len(delhi_sample_tickets()) + len(rj)
 
 
 def test_nine_reporters_repeat_component():

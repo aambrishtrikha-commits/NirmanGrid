@@ -42,7 +42,42 @@ def _parse_json(raw: str) -> dict:
     return json.loads(body)
 
 
-def classify_demand(text: str, mime_type: str | None = None, image_base64: str | None = None) -> Classification:
+def transcribe_voice(audio_base64: str, mime_type: str) -> dict:
+    """Hindi STT via Gemini. Rajasthani labelled raj with lower confidence. Not a Marwari ASR corpus."""
+    with genai.Client(api_key=_api_key()) as client:
+        result = client.models.generate_content(
+            model=_model_name(),
+            contents=[
+                types.Part(text="Transcribe this citizen voice note."),
+                types.Part.from_bytes(
+                    data=base64.b64decode(audio_base64),
+                    mime_type=mime_type,
+                ),
+            ],
+            config=types.GenerateContentConfig(
+                system_instruction=_prompt("transcribe.md"),
+                response_mime_type="application/json",
+                temperature=0.1,
+            ),
+        )
+    parsed = _parse_json(result.text or "")
+    parsed.pop("priority_score", None)
+    return {
+        "transcript": str(parsed.get("transcript") or "").strip(),
+        "lang": parsed.get("lang") or "hi",
+        "confidence": float(parsed.get("confidence") or 0),
+        "engine": "gemini-stt",
+        "note": "Not a published Marwari speech corpus. Dialectal voice uses Hindi STT + Gemini, confidence labelled.",
+    }
+
+
+def classify_demand(
+    text: str,
+    mime_type: str | None = None,
+    image_base64: str | None = None,
+    audio_mime: str | None = None,
+    audio_base64: str | None = None,
+) -> Classification:
     parts: list[types.Part] = [
         types.Part(text=text or "(no text; classify from the photo only)")
     ]
@@ -51,6 +86,13 @@ def classify_demand(text: str, mime_type: str | None = None, image_base64: str |
             types.Part.from_bytes(
                 data=base64.b64decode(image_base64),
                 mime_type=mime_type,
+            )
+        )
+    if audio_base64 and audio_mime:
+        parts.append(
+            types.Part.from_bytes(
+                data=base64.b64decode(audio_base64),
+                mime_type=audio_mime,
             )
         )
     with genai.Client(api_key=_api_key()) as client:

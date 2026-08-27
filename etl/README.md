@@ -9,6 +9,8 @@ python -m pip install -r apps/api/requirements.txt
 python etl/generate_sample_events.py
 python etl/01_boundaries.py
 python etl/02_osm_delhi.py
+python etl/03_osm_rajasthan.py
+python etl/04_pmgsy_rajasthan.py
 python -m pytest apps/api/tests
 ```
 

@@ -96,7 +96,18 @@ def score_cluster(
     pop = CENSUS_2011_POP.get(district, 0)
     population = (pop / _max_pop(tenant_id)) if pop else None
     vulnerability = 0.5 if has_nfhs else None
-    gap = _gap_value(kind, tenant_id)
+    gap_note = None
+    if has_pmgsy_osm:
+        from .snap import gap_from_layers
+
+        gap, has_pmgsy_osm, gap_note = gap_from_layers(lead.lat, lead.lng, kind, tenant_id)
+    else:
+        try:
+            from .snap import gap_from_layers
+
+            gap, has_pmgsy_osm, gap_note = gap_from_layers(lead.lat, lead.lng, kind, tenant_id)
+        except Exception:  # noqa: BLE001
+            gap = _gap_value(kind, tenant_id)
     investment = 0.4 if has_mplads else 1.0
     seasonal = _seasonal(kind, at)
 
@@ -133,9 +144,12 @@ def score_cluster(
             weight=WEIGHTS["gap"],
             value=gap,
             used=True,
-            note="OSM + PMGSY snap."
-            if has_pmgsy_osm
-            else "Partial: category heuristic until OSM/PMGSY highways are loaded. Not a live PWD inventory.",
+            note=gap_note
+            or (
+                "OSM + PMGSY snap."
+                if has_pmgsy_osm
+                else "Partial: category heuristic until OSM/PMGSY highways are loaded. Not a live PWD inventory."
+            ),
         ),
         ScoreComponent(
             key="investment",

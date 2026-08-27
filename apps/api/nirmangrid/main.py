@@ -9,10 +9,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from . import store
-from .gemini import classify_demand, gemini_ready, write_ministry_note
-from .paths import repo_root
+from .gemini import classify_demand, gemini_ready, transcribe_voice, write_ministry_note
 from .schemas import ElevateIn, IngestIn, TenantId, Ticket
-from .snap import snap_to_highway
+from .snap import layers_loaded, snap_to_highway
 from .tenants import TENANTS, district_for_point
 
 app = FastAPI(title="NirmanGrid API", version="0.1.0")
@@ -29,21 +28,21 @@ async def http_error(_request: Request, exc: HTTPException):
     return JSONResponse({"error": exc.detail}, status_code=exc.status_code)
 
 
-def highways_loaded() -> bool:
-    return (repo_root() / "data" / "clean" / "delhi_highways.geojson").exists()
-
-
 @app.get("/api/health")
 def health():
     tickets = store.all_tickets()
+    sample = [t for t in tickets if t.source == "SAMPLE"]
     return {
         "ok": True,
         "service": "nirmangrid-api",
         "engine": "python",
         "gemini": gemini_ready(),
-        "sample_events": sum(1 for t in tickets if t.source == "SAMPLE"),
+        "sample_events": len(sample),
+        "sample_delhi": sum(1 for t in sample if t.tenant_id == "delhi_pwd"),
+        "sample_rajasthan": sum(1 for t in sample if t.tenant_id == "rajasthan_pwd"),
         "live_events": sum(1 for t in tickets if t.source == "LIVE_WEB"),
-        "highways_loaded": highways_loaded(),
+        "layers": layers_loaded(),
+        "highways_loaded": any(layers_loaded().values()),
     }
 
 
@@ -77,24 +76,40 @@ async def ingest(body: IngestIn):
             detail="GEMINI_API_KEY is not set. Classify cannot run. This is not a stub.",
         )
     photo = body.photo
+    audio = body.audio
     photo_sha = hashlib.sha256(photo.base64.encode("utf-8")).hexdigest() if photo else None
+    text = body.text[:2000]
+    transcript = None
+    if audio:
+        transcript = transcribe_voice(audio.base64, audio.mimeType)
+        spoken = transcript.get("transcript") or ""
+        text = spoken if not text else f"{text}\n{spoken}".strip()
     classification = classify_demand(
-        body.text[:2000],
+        text,
         photo.mimeType if photo else None,
         photo.base64 if photo else None,
+        audio.mimeType if audio else None,
+        audio.base64 if audio else None,
     )
-    snapped = snap_to_highway(body.lat, body.lng)
+    snapped = snap_to_highway(body.lat, body.lng, body.tenant_id)
     lat = snapped["lat"] if snapped else body.lat
     lng = snapped["lng"] if snapped else body.lng
+    media: str = "text"
+    if photo and audio:
+        media = "photo"
+    elif audio:
+        media = "voice"
+    elif photo:
+        media = "photo"
     pending = Ticket(
         id=store.new_ticket_id(),
         tenant_id=body.tenant_id,
         lat=lat,
         lng=lng,
-        text=body.text[:2000],
+        text=text,
         lang=body.lang or classification.lang,
         channel="web",
-        media_type="photo" if photo else "text",
+        media_type=media,  # type: ignore[arg-type]
         photo_sha256=photo_sha,
         classification=classification,
         cluster_id="pending",
@@ -111,6 +126,7 @@ async def ingest(body: IngestIn):
         "classification": pending.classification.model_dump(),
         "district": pending.district,
         "snap": snapped,
+        "transcript": transcript,
         "sla_hours": TENANTS[body.tenant_id]["sla_hours"],
         "banner": "Filed on NirmanGrid. SAMPLE events already sit on this map. This live web ticket is not a PWD Sewa complaint.",
     }

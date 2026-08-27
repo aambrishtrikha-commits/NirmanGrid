@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { MapFrame } from "../../components/MapFrame";
 import { TENANTS } from "../../lib/tenants";
 import type { Cluster, TenantId } from "../../../../packages/schema/src";
@@ -10,10 +10,14 @@ export default function CitizenPage() {
   const [clusters, setClusters] = useState<Cluster[]>([]);
   const [text, setText] = useState("");
   const [photo, setPhoto] = useState<{ mimeType: string; base64: string } | null>(null);
+  const [audio, setAudio] = useState<{ mimeType: string; base64: string } | null>(null);
+  const [recording, setRecording] = useState(false);
   const [pick, setPick] = useState<{ lat: number; lng: number } | null>(null);
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<unknown>(null);
   const [error, setError] = useState<string | null>(null);
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
   const t = TENANTS[tenant];
 
   useEffect(() => {
@@ -31,6 +35,35 @@ export default function CitizenPage() {
       setPhoto({ mimeType: file.type || "image/jpeg", base64 });
     };
     reader.readAsDataURL(file);
+  }
+
+  async function toggleRecord() {
+    if (recording && recorderRef.current) {
+      recorderRef.current.stop();
+      setRecording(false);
+      return;
+    }
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const rec = new MediaRecorder(stream);
+    chunksRef.current = [];
+    rec.ondataavailable = (e) => {
+      if (e.data.size) chunksRef.current.push(e.data);
+    };
+    rec.onstop = async () => {
+      stream.getTracks().forEach((tr) => tr.stop());
+      const blob = new Blob(chunksRef.current, { type: rec.mimeType || "audio/webm" });
+      const buf = await blob.arrayBuffer();
+      let binary = "";
+      const bytes = new Uint8Array(buf);
+      for (let i = 0; i < bytes.length; i += 1) binary += String.fromCharCode(bytes[i]);
+      setAudio({
+        mimeType: blob.type || "audio/webm",
+        base64: btoa(binary),
+      });
+    };
+    recorderRef.current = rec;
+    rec.start();
+    setRecording(true);
   }
 
   function useMyLocation() {
@@ -55,6 +88,7 @@ export default function CitizenPage() {
           lng: pick.lng,
           text,
           photo,
+          audio,
         }),
       });
       const data = await res.json();
@@ -76,8 +110,9 @@ export default function CitizenPage() {
       <p className="kicker">Field layer · web stand-in for WhatsApp</p>
       <h1>File a development need</h1>
       <p className="lede">
-        Photo + pin + a sentence. Gemini returns type, severity, language and a
-        reason. It does not return a priority score.
+        Photo + pin + text or a Hindi/Marwari voice note. Gemini classifies.
+        It does not return a priority score. Rajasthani voice falls back to
+        Hindi STT + Gemini, confidence labelled.
       </p>
       <div className="split" style={{ marginTop: 18 }}>
         <section className="card">
@@ -94,10 +129,17 @@ export default function CitizenPage() {
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="हिंदी या English. Example: Janpath pe bada gadha hai"
+            placeholder="हिंदी, English, या मारवाड़ी. Barmer: पुलिया टूटी"
           />
           <label>Photo</label>
           <input type="file" accept="image/*" onChange={(e) => onFile(e.target.files?.[0])} />
+          <label>Voice note</label>
+          <div className="row">
+            <button className="btn secondary" type="button" onClick={() => void toggleRecord()}>
+              {recording ? "Stop recording" : "Record Hindi / Marwari"}
+            </button>
+            <span className="meta">{audio ? "voice attached" : "optional"}</span>
+          </div>
           <div className="row" style={{ marginTop: 12 }}>
             <button className="btn secondary" type="button" onClick={useMyLocation}>
               Use my location

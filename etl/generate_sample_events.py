@@ -16,8 +16,8 @@ def main() -> int:
     print(f"Wrote {result['count']} SAMPLE events")
     print(result["json"])
     print(result["csv"])
-    if result["count"] != 60:
-        print("Expected 60 events.", file=sys.stderr)
+    if result["count"] < 160:
+        print("Expected Delhi 60 + Rajasthan demo events.", file=sys.stderr)
         return 1
     return 0
 
