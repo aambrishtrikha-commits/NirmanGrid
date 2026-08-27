@@ -1,0 +1,31 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+service-account*.json
+
+# dependencies and builds
+node_modules/
+.next/
+dist/
+build/
+out/
+.turbo/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+
+# local extracts
+_extract/
