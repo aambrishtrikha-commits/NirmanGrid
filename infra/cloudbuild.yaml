@@ -1,0 +1,29 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_IMAGE}
+      - -f
+      - infra/Dockerfile
+      - .
+  - name: gcr.io/cloud-builders/docker
+    args: [push, ${_IMAGE}]
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - nirmangrid
+      - --image
+      - ${_IMAGE}
+      - --region
+      - ${_REGION}
+      - --allow-unauthenticated
+      - --set-env-vars
+      - GCP_PROJECT=$PROJECT_ID
+substitutions:
+  _IMAGE: gcr.io/${PROJECT_ID}/nirmangrid:latest
+  _REGION: asia-south1
+images:
+  - ${_IMAGE}

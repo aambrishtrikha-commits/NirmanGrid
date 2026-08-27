@@ -1,0 +1,11 @@
+{
+  "name": "nirmangrid",
+  "private": true,
+  "description": "NirmanGrid — Digital Public Good for ranked infrastructure works",
+  "scripts": {
+    "dev": "npm run dev --prefix apps/web",
+    "build": "npm run build --prefix apps/web",
+    "start": "npm run start --prefix apps/web",
+    "typecheck": "npm run typecheck --prefix apps/web"
+  }
+}

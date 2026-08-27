@@ -24,7 +24,7 @@ If the planning or national layer is missing, this is last year's product.
 | `NirmanGrid-Datasets.xlsx` | Only allowed data list. Do not invent an API for a source that is not listed. |
 | `NirmanGrid-Pitch.pptx` | Ten-slide pitch. |
 
-Code for the live product lands in this repo as it is built.
+Week 1 code is in this repo: citizen form, Gemini classify, SQL score, ops map, national shelf, 60 Delhi SAMPLE events.
 
 ## Intended layout
 
@@ -66,12 +66,33 @@ Classify and the ministry note must hit Gemini on the live URL. Score is SQL, no
 
 ## Local setup
 
+You need Node 22+ and a Gemini API key. Cloud Run deploy is the only production step you have to run.
+
 ```bash
-cp .env.example .env
-# fill GEMINI_API_KEY, GCP_PROJECT, MAPS_KEY
+copy .env.example .env
+# fill GEMINI_API_KEY  (required for classify + ministry note)
+# GCP_PROJECT and MAPS_KEY can wait
+
+npm install --prefix apps/web
+npm run dev
 ```
 
-Do not commit `.env`.
+Open http://127.0.0.1:3000
+
+- `/citizen` — photo + pin + text. Gemini classifies. No priority_score in that JSON.
+- `/ops` — Delhi SAMPLE clusters, SQL score drawer, elevate.
+- `/national` — ranked shelf across tenants.
+- `/api/health` — sample count + whether Gemini is configured.
+
+Without `GEMINI_API_KEY`, the map and scores still run. Filing a live report or elevating returns 503. We do not stub Gemini.
+
+### What you deploy
+
+```bash
+gcloud builds submit --config infra/cloudbuild.yaml
+```
+
+Set `GEMINI_API_KEY` on the Cloud Run service. Do not put it in git.
 
 ## Licence
 

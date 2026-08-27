@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NirmanGrid sample demand event",
+  "type": "object",
+  "required": [
+    "id",
+    "source",
+    "tenant_id",
+    "lat",
+    "lng",
+    "lang",
+    "channel",
+    "media_type",
+    "raw_text",
+    "category_gold"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "source": { "const": "SAMPLE" },
+    "tenant_id": { "enum": ["delhi_pwd", "rajasthan_pwd"] },
+    "lat": { "type": "number" },
+    "lng": { "type": "number" },
+    "lang": { "enum": ["hi", "en", "raj"] },
+    "channel": { "enum": ["web", "whatsapp"] },
+    "media_type": { "enum": ["photo", "voice", "text"] },
+    "raw_text": { "type": "string" },
+    "category_gold": {
+      "enum": [
+        "pothole",
+        "streetlight",
+        "waterlogging",
+        "footpath",
+        "culvert",
+        "drainage",
+        "other"
+      ]
+    },
+    "district": { "type": "string" },
+    "cluster_id": { "type": "string" }
+  }
+}

@@ -27,5 +27,10 @@ Thumbs.db
 *.log
 .idea/
 
-# local extracts
+# local extracts and runtime
 _extract/
+data/local/
+apps/web/.next/
+apps/web/node_modules/
+apps/web/tsconfig.tsbuildinfo
+*.tsbuildinfo
